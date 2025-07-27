@@ -1,0 +1,21 @@
+package com.blue;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class OMR {
+	public static void main(String[] args) {
+		WebDriver d= new EdgeDriver();
+		d.get("https://www.omrbranch.com/softwaretestingtraininginchennaiomr");
+		d.manage().window().maximize();
+		d.findElement(By.xpath("//button[text()='Click to see current date']")).click();
+		Alert a= d.switchTo().alert();
+		a.accept();
+		String b= d.findElement(By.xpath("//h6[contains(text(),'You pressed ok')]")).getText();
+		System.out.println(b);
+		d.close();
+	}
+
+}
